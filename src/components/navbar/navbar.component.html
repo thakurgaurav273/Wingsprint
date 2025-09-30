@@ -1,0 +1,17 @@
+<div class="globe-navbar__wrapper">
+    <div class="globe-navbar__left-tab-container">
+        <div (click)="setActiveTab('flight')" class="globe-navbar__tab-item" [ngClass]="activeTab === 'flight' ? 'active' : ''">
+            <img src="assets/airplane.svg" alt="" class="globe-navbar__tab-icon">
+            <p class="globe-navbar__flight-tab-text">Find Flight</p>
+        </div>
+        <div (click)="setActiveTab('hotel')" class="globe-navbar__tab-item" [ngClass]="activeTab === 'hotel' ? 'active' : ''">
+            <img src="assets/ion_bed.svg" alt="" class="globe-navbar__tab-icon">
+            <p class="globe-navbar__home-tab-text">Find Stays</p>
+        </div>
+    </div>
+    <img src="assets/Logo.png" alt="" class="globe-navbar__logo">
+    <div class="globe-navbar__right-container">
+        <button class="globe-navbar__login btn">Login</button>
+        <button class="globe-navbar__signup btn">Sign up</button>
+    </div>
+</div>

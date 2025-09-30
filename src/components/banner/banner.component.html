@@ -1,0 +1,71 @@
+<div class="globe-banner__wrapper">
+    <div class="globe-banner__image-container" [style.background-image]="'url(' + bannerImageUrl + ')'">
+        <div class="globe-banner__text-wrapper">
+            <p class="globe-banner__description-text">
+                Make your travel whishlist, we'll do the rest
+            </p>
+            <p class="globe-banner__description-subtitle">
+                Special offers to suit your plan
+            </p>
+        </div>
+        <div class="globe-banner__search-container">
+            <div class="globe-banner__search-wrapper">
+                <div class="globe-banner__search-container-title">
+                    Where are you flying?
+                </div>
+                <div class="globe-banner__search-container-selectors">
+                    <fieldset class="destination-field from">
+                        <legend class="text-label">Enter Destination</legend>
+                        <div class="input-wrapper">
+                            <img src="assets/ion_bed.svg" class="input-icon" alt="">
+                            <input type="text" (change)="handleInput('destination', $event)" class="search-input" placeholder="Istanbul, Turkey" id="destination">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="destination-field">
+                        <legend class="text-label">Check In</legend>
+                        <div class="input-wrapper">
+                            <input type="date" class="search-input search-input-date" placeholder="Fri 12/2" id="checkin">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="destination-field">
+                        <legend class="text-label">Check Out</legend>
+                        <div class="input-wrapper">
+                            <input type="date" class="search-input search-input-date" placeholder="Sun 12/4" id="checkout">
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="destination-field guest">
+                        <legend class="text-label">Rooms & Guests
+                        </legend>
+                        <img src="assets/User.svg" class="input-icon" alt="User icon">
+                        <select name="rooms_guests" (change)="handleInput('rooms_guests', $event)" id="rooms_guests">
+                            <option value="1 room, 1 guest">1 room, 1 guest</option>
+                            <option value="1 room, 2 guests" selected>1 room, 2 guests</option>
+                            <option value="1 room, 3 guests">1 room, 3 guests</option>
+                            <option value="2 rooms, 2 guests">2 rooms, 2 guests</option>
+                            <option value="2 rooms, 3 guests">2 rooms, 3 guests</option>
+                            <option value="2 rooms, 4 guests">2 rooms, 4 guests</option>
+                            <option value="3 rooms, 4 guests">3 rooms, 4 guests</option>
+                            <option value="3 rooms, 6 guests">3 rooms, 6 guests</option>
+                        </select>
+                    </fieldset>
+
+                </div>
+                <div class="globe-banner__search-container-submit-wrapper">
+                    <div class="globe-banner__search-container-button">
+                        <button class="add-code btn">
+                            <img src="assets/plus.svg" alt="" srcset="">
+                            Add Promo Code
+                        </button>
+                        <button class="show-places btn" (click)="showPlaces()">
+                            <img src="assets/building.svg" alt="" srcset="">
+                            Show Places
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

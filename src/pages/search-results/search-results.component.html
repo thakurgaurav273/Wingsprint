@@ -1,0 +1,184 @@
+<div class="globe-search-result-wrapper">
+    <div class="globe-search-result">
+        <div class="globe-search-result__header-wrapper">
+            <div class="globe-banner__search-container-selectors">
+                <fieldset class="destination-field from">
+                    <legend class="text-label">Enter Destination</legend>
+                    <div class="input-wrapper">
+                        <img src="assets/ion_bed.svg" class="input-icon" alt="">
+                        <input type="text" (change)="handleInput('destination', $event)" class="search-input"
+                            [placeholder]="data.destination ? data.destination : 'Istanbul, Turkey'" id="destination">
+                    </div>
+                </fieldset>
+
+                <fieldset class="destination-field">
+                    <legend class="text-label">Check In</legend>
+                    <div class="input-wrapper">
+                        <input type="date" class="search-input search-input-date" [value]="formatDate(data.checkIn)"
+                            id="checkin">
+
+                    </div>
+                </fieldset>
+
+                <fieldset class="destination-field">
+                    <legend class="text-label">Check Out</legend>
+                    <div class="input-wrapper">
+                        <input type="date" class="search-input search-input-date" [value]="formatDate(data.checkOut)"
+                            id="checkout">
+
+                    </div>
+                </fieldset>
+
+                <fieldset class="destination-field guest">
+                    <legend class="text-label">Rooms & Guests
+                    </legend>
+                    <img src="assets/User.svg" class="input-icon" alt="User icon">
+                    <select name="rooms_guests" (change)="handleInput('rooms_guests', $event)" id="rooms_guests">
+                        <option value="1 room, 1 guest">1 room, 1 guest</option>
+                        <option value="1 room, 2 guests" selected>1 room, 2 guests</option>
+                        <option value="1 room, 3 guests">1 room, 3 guests</option>
+                        <option value="2 rooms, 2 guests">2 rooms, 2 guests</option>
+                        <option value="2 rooms, 3 guests">2 rooms, 3 guests</option>
+                        <option value="2 rooms, 4 guests">2 rooms, 4 guests</option>
+                        <option value="3 rooms, 4 guests">3 rooms, 4 guests</option>
+                        <option value="3 rooms, 6 guests">3 rooms, 6 guests</option>
+                    </select>
+                </fieldset>
+            </div>
+            <button class="search">
+                <img src="assets/Search.svg" alt="" srcset="">
+            </button>
+        </div>
+        <div class="globe-search-result__bottom">
+            <div class="globe-search-result__filter-wrapper">
+                <!-- Price Filter -->
+                <div class="filter-section">
+                    <div class="filter-header" (click)="toggleFilter('price')">
+                        <span class="filter-title">Price</span>
+                        <span class="filter-icon">^</span>
+                    </div>
+                    <div class="filter-content">
+                        <div class="range-slider">
+                            <input type="range" min="50" max="1200" [(ngModel)]="priceRange.min" class="slider">
+                            <input type="range" min="50" max="1200" [(ngModel)]="priceRange.max" class="slider">
+                        </div>
+                        <div class="range-labels">
+                            <span>${{priceRange.min}}</span>
+                            <span>${{priceRange.max}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Departure Time Filter -->
+                <div class="filter-section">
+                    <div class="filter-header" (click)="toggleFilter('departure')">
+                        <span class="filter-title">Departure Time</span>
+                        <span class="filter-icon">^</span>
+                    </div>
+                    <div class="filter-content">
+                        <div class="range-slider">
+                            <input type="range" min="0" max="1440" class="slider">
+                            <input type="range" min="0" max="1440" class="slider">
+                        </div>
+                        <div class="range-labels">
+                            <span>{{departureTimeRange.start}}</span>
+                            <span>{{departureTimeRange.end}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Filter -->
+                <div class="filter-section">
+                    <div class="filter-header" (click)="toggleFilter('rating')">
+                        <span class="filter-title">Rating</span>
+                        <span class="filter-icon">^</span>
+                    </div>
+                    <div class="filter-content">
+                        <div class="rating-buttons">
+                            <button *ngFor="let rating of ratings" class="rating-btn"
+                                [class.active]="selectedRatings.includes(rating)" (click)="toggleRating(rating)">
+                                {{rating}}+
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Airlines Filter -->
+                <div class="filter-section">
+                    <div class="filter-header" (click)="toggleFilter('airlines')">
+                        <span class="filter-title">Airlines</span>
+                        <span class="filter-icon">^</span>
+                    </div>
+                    <div class="filter-content">
+                        <label *ngFor="let airline of airlines" class="checkbox-label">
+                            <input type="checkbox" [checked]="airline.checked" (change)="onAirlineChange(airline)">
+                            <span>{{airline.name}}</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Trips Filter -->
+                <div class="filter-section">
+                    <div class="filter-header" (click)="toggleFilter('trips')">
+                        <span class="filter-title">Trips</span>
+                        <span class="filter-icon">^</span>
+                    </div>
+                    <div class="filter-content">
+                        <label *ngFor="let tripType of tripTypes" class="checkbox-label">
+                            <input type="checkbox" [checked]="tripType.checked" (change)="onTripTypeChange(tripType)">
+                            <span>{{tripType.name}}</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="globe-search-result__list">
+                <!-- Sort Header -->
+                <div class="results-header">
+                    <div class="sort-tabs">
+                        <button class="sort-tab">
+                            <div class="sort-label">Cheapest</div>
+                            <div class="sort-details">$99 · 2h 18m</div>
+                        </button>
+                        <button class="sort-tab active">
+                            <div class="sort-label">Best</div>
+                            <div class="sort-details">$99 · 2h 18m</div>
+                        </button>
+                        <button class="sort-tab">
+                            <div class="sort-label">Quickest</div>
+                            <div class="sort-details">$99 · 2h 18m</div>
+                        </button>
+                    </div>
+                    <button class="other-sort-btn">
+                        <span class="menu-icon">≡</span>
+                        Other sort
+                    </button>
+                </div>
+
+                <!-- Results Count and Sort -->
+                <div class="results-info">
+                    <span class="results-count">Showing {{displayedResults}} of <span
+                            class="total-count">{{totalResults}} places</span></span>
+                    <div class="sort-dropdown">
+                        <span>Sort by</span>
+                        <select [(ngModel)]="sortBy" (change)="onSortChange(sortBy)">
+                            <option value="Recommended">Recommended</option>
+                            <option value="Price">Price</option>
+                            <option value="Duration">Duration</option>
+                            <option value="Rating">Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Flight Results -->
+                <app-flight-card *ngFor="let flight of flights" [flight]="flight" (viewDeals)="onFlightSelect($event)">
+                </app-flight-card>
+
+                <!-- Show More Button -->
+                <button class="show-more-btn" (click)="showMoreResults()">
+                    Show more results
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

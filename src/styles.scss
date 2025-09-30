@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --background-color: #fff;
+    // footer and navbars
+    --brand-color-primary: #8DD3BB;
+    // greenish black
+    --text-color-dark: #112211;
+}
+
+*{
+    margin: 0 0;
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: 'Montserrat', sans-serif;
+}
