@@ -1,0 +1,170 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signup-image-section img {
+    width: 400px;
+    height: 550px;
+    border-radius: 24px;
+}
+
+.signup-form-section {
+    padding: 48px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-wrapper {
+    margin-bottom: 16px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #185c37;
+}
+
+.logo .highlighted {
+    color: #00b386;
+}
+
+h1 {
+    margin: 0 0 10px;
+    font-size: 2.5rem;
+}
+
+p {
+    color: #767676;
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+form {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    margin-right: 7px;
+}
+
+.terms {
+    display: flex;
+    align-items: center;
+    margin: 10px 0 18px;
+    font-size: 0.95rem;
+}
+
+.link {
+    color: #185c37;
+    cursor: pointer;
+}
+
+.link.privacy {
+    color: #df6565;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #b8e5d0;
+    color: #185c37;
+    border: none;
+    border-radius: 7px;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
+
+.login-link {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    color: #a7a2a2;
+}
+
+.or-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #bababa;
+    margin: 12px 0;
+}
+
+.or-divider span {
+    flex: 1;
+    height: 1px;
+    background: #e0e0e0;
+}
+
+.social-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #cce5db;
+    border-radius: 7px;
+    background: #fff;
+    cursor: pointer;
+}
+
+
+input {
+    box-sizing: border-box;
+}
+
+.password-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-icons .icon {
+    height: 32px;
+    width: 32px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 18px;
+    margin-top: 8px;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+
+.social-icons button {
+    background: transparent;
+    border: 2px solid #cfd8dc;
+    border-radius: 9px;
+    width: 140px;
+    height: 60px;
+    cursor: pointer;
+    box-sizing: border-box;
+}

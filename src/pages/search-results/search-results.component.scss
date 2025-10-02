@@ -1,217 +1,218 @@
 .globe-search-result-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 0 100px;
+  display: flex;
+  align-items: center;
+  padding: 0 100px;
 }
 
 .globe-search-result {
-    overflow: hidden;
-    min-height: 100vh;
-    padding-bottom: 150px;
-    width: 100%;
-    max-width: 1400px;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-bottom: 150px;
+  width: 100%;
+  max-width: 1400px;
 }
 
 .globe-banner__search-wrapper {
-    width: 80%;
-    max-width: 1400px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
+  width: 80%;
+  max-width: 1400px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
 }
 
 .globe-banner__search-container {
-    position: absolute;
-    bottom: -200px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    z-index: 2;
+  position: absolute;
+  bottom: -200px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
 }
 
 .globe-banner__search-container-title {
-    font-weight: 600;
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .globe-banner__search-container-selectors {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 16px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
 
-    @media (max-width: 1200px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr;
-    }
+  @media (max-width: 768px) {
+    grid-template-rows: 0.5fr;
+  }
 
-    width: 90%;
+  width: 90%;
 }
 
 .globe-search-result__header-wrapper {
-    display: flex;
-    margin-top: 30px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
-    background-color: #ffffff;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
 }
 
 .search {
-    background-color: #9edecc;
-    border: 0;
-    border-radius: 10px;
-    height: 50px;
+  background-color: #9edecc;
+  border: 0;
+  border-radius: 10px;
+  height: 50px;
 }
 
 .destination-field {
-    border: 2px solid #d1d5db;
-    border-radius: 8px;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    min-width: 0; // Important for grid items
+  border: 2px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  position: relative;
+  min-width: 0; // Important for grid items
 
-    &:focus-within {
-        border-color: #3b82f6;
-    }
+  &:focus-within {
+    border-color: #3b82f6;
+  }
 }
 
 .text-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: #6b7280;
-    padding: 0 8px;
-    margin-left: 4px;
-    background-color: white;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  padding: 0 8px;
+  margin-left: 4px;
+  background-color: white;
 }
 
 .input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: 8px 12px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
 }
 
 #rooms_guests {
-    position: absolute;
-    right: 10px;
-    height: 100%;
-    top: 0%;
-    width: 80%;
-    background-color: transparent;
-    border: none;
-    outline: none;
+  position: absolute;
+  right: 10px;
+  height: 100%;
+  top: 0%;
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 .destination-field.guest {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search-input {
-    width: 100%;
-    height: 40px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    color: #1f2937;
-    background: transparent;
-    padding: 0 35px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #1f2937;
+  background: transparent;
+  padding: 0 35px;
 
-    &::placeholder {
-        color: #9ca3af;
-    }
+  &::placeholder {
+    color: #9ca3af;
+  }
 }
 
 .input-icon {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
 
-    &:not(.right) {
-        left: 12px;
-    }
+  &:not(.right) {
+    left: 12px;
+  }
 
-    &.right {
-        right: 12px;
-        left: auto;
-    }
+  &.right {
+    right: 12px;
+    left: auto;
+  }
 }
 
 .globe-banner__search-container-button {
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
 
-    @media (max-width: 768px) {
-        flex-direction: column;
+  @media (max-width: 768px) {
+    flex-direction: column;
 
-        .btn {
-            width: 100%;
-            justify-content: center;
-        }
+    .btn {
+      width: 100%;
+      justify-content: center;
     }
+  }
 }
 
 .btn {
-    height: 48px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border: 0;
-    border-radius: 8px;
-    padding: 0 24px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    transition: all 0.3s ease;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 24px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 
-    &:hover {
-        transform: translateY(-2px);
-    }
+  &:hover {
+    transform: translateY(-2px);
+  }
 
-    &:active {
-        transform: translateY(0);
-    }
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 .add-code {
-    background-color: transparent;
-    color: #4b5563;
+  background-color: transparent;
+  color: #4b5563;
 
-    &:hover {
-        background-color: #f3f4f6;
-    }
+  &:hover {
+    background-color: #f3f4f6;
+  }
 }
 
 .show-places {
-    background-color: var(--brand-color-primary);
-    color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: var(--brand-color-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
-    &:hover {
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    }
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  }
 
-    img {
-        width: 20px;
-        height: 20px;
-    }
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .search-input-date {
-    padding: 0 0;
+  padding: 0 0;
 }
 
 .globe-search-result__bottom {
@@ -501,4 +502,19 @@
     min-width: auto;
     flex: 1;
   }
+}
+
+
+@media (max-width: 768px) {
+  .globe-search-result-wrapper {
+    padding: 0 30px;
+  }
+
+.globe-search-result__header-wrapper{
+  gap: 20px;
+}
+
+#rooms_guests{
+  width: 65%;
+}
 }

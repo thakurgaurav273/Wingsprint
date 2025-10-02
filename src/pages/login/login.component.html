@@ -1,0 +1,52 @@
+<div class="login-layout">
+  <!-- Left panel: Login Form -->
+  <div class="login-left">
+    <img src="assets/Logo.png" alt="logo" class="logo">
+    <h1>Login</h1>
+    <p>Login to access your Golobe account</p>
+    <form>
+      <label>Email</label>
+      <input type="email" placeholder="john.doe@gmail.com" required>
+      <label>Password</label>
+      <div class="password-wrap">
+        <input type="password" placeholder="Password" required>
+        <!-- Add password toggle icon if needed -->
+      </div>
+      <div class="row">
+        <label>
+          <input type="checkbox"> Remember me
+        </label>
+        <a href="#" class="forgot">Forgot Password</a>
+      </div>
+      <button type="submit" class="login-btn">Login</button>
+      <div>
+        Don't have an account?
+        <span class="signup" (click)="handleSignup()">Sign up</span>
+      </div>
+    </form>
+    <div class="social-row">
+      <span>Or login with</span>
+      <div class="social-icons">
+        <button><img class="icon" src="assets/fb.png" alt="Facebook"></button>
+        <button><img class="icon" src="assets/google.png" alt="Google"></button>
+        <button><img class="icon" src="assets/apple.png" alt="Apple"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right panel: Carousel -->
+  <div class="login-right">
+    <div class="carousel">
+      <img [src]="images[currentIndex]" alt="Carousel Slide" class="carousel-img">
+      <div class="carousel-controls">
+        <button type="button" (click)="prevSlide()">&lt;</button>
+        <button type="button" (click)="nextSlide()">&gt;</button>
+      </div>
+      <div class="carousel-indicator">
+        <span *ngFor="let img of images; let idx = index"
+          [class.active]="currentIndex === idx">
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

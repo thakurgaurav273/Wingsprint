@@ -1,0 +1,48 @@
+<div class="signup-container">
+    <div class="signup-image-section">
+        <!-- Replace with angular carousel if needed -->
+        <img src="assets/Rectangle1.png" alt="Resort" />
+    </div>
+    <div class="signup-form-section">
+        <div class="logo-wrapper">
+            <img src="assets/Logo.png" alt="logo" class="logo">
+        </div>
+        <h1>Sign up</h1>
+        <p>Let’s get you all st up so you can access your personal account.</p>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <input type="text" formControlName="firstName" placeholder="First Name" />
+                <input type="text" formControlName="lastName" placeholder="Last Name" />
+            </div>
+            <div class="row">
+                <input type="email" formControlName="email" placeholder="Email" />
+                <input type="text" formControlName="phone" placeholder="Phone Number" />
+            </div>
+            <div class="password-wrapper">
+                <input type="password" formControlName="password" placeholder="Password" />
+                <input type="password" formControlName="confirmPassword" placeholder="Confirm Password" />
+            </div>
+            <div class="terms">
+                <input type="checkbox" formControlName="terms" id="terms" />
+                <label for="terms">
+                    I agree to all the
+                    <span class="link">Terms</span> and
+                    <span class="link privacy">Privacy Policies</span>
+                </label>
+            </div>
+            <button type="submit" [disabled]="!signUpForm.valid">Create account</button>
+        </form>
+        <div class="login-link">
+            Already have an account?
+            <span class="link">Login</span>
+        </div>
+        <div class="or-divider">
+            <span></span>Or Sign up with<span></span>
+        </div>
+        <div class="social-icons">
+            <button><img class="icon" src="assets/fb.png" alt="Facebook"></button>
+            <button><img class="icon" src="assets/google.png" alt="Google"></button>
+            <button><img class="icon" src="assets/apple.png" alt="Apple"></button>
+        </div>
+    </div>
+</div>

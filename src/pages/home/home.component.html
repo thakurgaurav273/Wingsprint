@@ -78,7 +78,7 @@
                     </button>
                 </div>
 
-                 <div class="trave-card" [style.background-image]="`url(${backgroundImage})`">
+                <div class="trave-card" [style.background-image]="`url(${backgroundImage})`">
                     <div class="details">
                         <div class="title-wrapper">
                             <div class="title">
@@ -97,7 +97,7 @@
                     </button>
                 </div>
 
-                 <div class="trave-card" [style.background-image]="`url(${backgroundImage})`">
+                <div class="trave-card" [style.background-image]="`url(${backgroundImage})`">
                     <div class="details">
                         <div class="title-wrapper">
                             <div class="title">
@@ -119,3 +119,7 @@
         </div>
     </div>
 </div>
+
+@if (showLoginCard) {
+    <app-login></app-login>
+}
