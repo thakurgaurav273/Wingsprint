@@ -1,4 +1,8 @@
-<booking-app-navbar></booking-app-navbar>
+@if (showLayout) {
+    <booking-app-navbar></booking-app-navbar>
+}
 <router-outlet />
-<booking-app-footer></booking-app-footer>
+@if (showLayout) {
+    <booking-app-footer></booking-app-footer>
+}
 

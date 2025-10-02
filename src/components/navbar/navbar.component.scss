@@ -1,32 +1,33 @@
-.globe-navbar__wrapper{
+.globe-navbar__wrapper {
     width: 100vw;
     height: 70px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 
-.globe-navbar__left-tab-container{
+.globe-navbar__left-tab-container {
     display: flex;
     gap: 40px;
     height: 100%;
 }
 
-.globe-navbar__left-tab-container p{
+.globe-navbar__left-tab-container p {
     margin: 0;
 }
 
-.globe-navbar__tab-icon{
+.globe-navbar__tab-icon {
     height: 24px;
     width: 24px;
 }
 
-.globe-navbar__tab-item.active{
+.globe-navbar__tab-item.active {
     z-index: 2;
     border-bottom: 3px solid var(--brand-color-primary);
 }
 
-.globe-navbar__tab-item{
+.globe-navbar__tab-item {
     cursor: pointer;
     height: 100%;
     display: flex;
@@ -34,32 +35,74 @@
     gap: 4px;
 }
 
-.globe-navbar__logo{
+.globe-navbar__logo {
     height: 30px;
     width: 100px;
 }
 
-.globe-navbar__right-container{
+.globe-navbar__right-container {
     height: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.globe-navbar__right-container .btn{
+.globe-navbar__right-container .btn {
     height: 40px;
     width: 100px;
+    cursor: pointer;
 }
 
-.globe-navbar__login{
+.globe-navbar__login {
     background-color: transparent;
     border: 0;
     font-weight: 900;
 }
 
-.globe-navbar__signup{
+.globe-navbar__signup {
     background-color: black;
     border: 0;
     color: white;
     border-radius: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.globe-navbar-hamburger {
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+}
+
+.globe-navbar__dropdown {
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    width: 200px;
+    background-color: rgb(235, 235, 235);
+    z-index: 2;
+    padding: 4px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.globe-navbar__dropdown-list-item {
+    display: flex;
+    box-sizing: border-box;
+    padding: 8px 0;
+    gap: 10px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.globe-navbar__dropdown-list-item.last{
+    border-bottom: unset;
+}
+
+.mobile-nav {
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
 }

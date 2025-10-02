@@ -194,3 +194,36 @@
     position: relative;
     min-width: 0; // Important for grid items
 }
+
+@media screen and (max-width: 850px) {
+    .footer__newsletter-wrapper {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    .footer__newsletter-wrapper img {
+        align-self: center;
+        display: none;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-container {
+        padding-top: 180px;
+    }
+
+    .footer-brand {
+        flex: unset;
+    }
+
+    .footer-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        align-items: start;
+    }
+}
