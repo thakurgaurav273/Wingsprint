@@ -20,13 +20,18 @@
 }
 
 .logo-wrapper {
-    margin-bottom: 16px;
+    padding-bottom: 70px;
+    position: relative;
 }
 
 .logo {
     font-weight: bold;
     font-size: 2rem;
+    height: 70px;
+    width: 220px;
     color: #185c37;
+    position: absolute;
+    left: -20px;
 }
 
 .logo .highlighted {

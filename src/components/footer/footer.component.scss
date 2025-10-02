@@ -15,6 +15,7 @@
     justify-content: space-between;
     gap: 32px;
     padding-top: 150px;
+    padding-left: 20px;
 }
 
 .footer-brand {
@@ -97,9 +98,6 @@
 
 /* Extra responsive for mobile */
 @media (max-width: 540px) {
-    .footer {
-        padding: 22px 8px;
-    }
 
     .footer-container {
         flex-direction: column;
@@ -225,5 +223,20 @@
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 10px;
         align-items: start;
+    }
+}
+
+.globe-navbar__logo{
+    height: 80px;
+    width: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    .footer__newsletter-wrapper input{
+        width: unset;
+    }
+
+    .footer__newsletter-wrapper{
+        width: 80%;
     }
 }

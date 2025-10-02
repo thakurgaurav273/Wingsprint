@@ -36,8 +36,8 @@
 }
 
 .globe-navbar__logo {
-    height: 30px;
-    width: 100px;
+    height: 70px;
+    width: 220px;
 }
 
 .globe-navbar__right-container {
@@ -81,11 +81,11 @@
     top: 70px;
     right: 10px;
     width: 200px;
-    background-color: rgb(235, 235, 235);
+    background-color: white;
     z-index: 2;
     padding: 4px 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgb(0 0 0 / 20%);
 }
 
 .globe-navbar__dropdown-list-item {
