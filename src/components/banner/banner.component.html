@@ -13,36 +13,102 @@
                 <div class="globe-banner__search-container-title">
                     Where are you flying?
                 </div>
-                <div class="globe-banner__search-container-selectors">
+                <div class="globe-banner__search-container-selectors"
+                    [ngClass]="bannerType === 'flight' ? 'flight' : ''">
+                    @if (bannerType === 'flight') {
+                    <fieldset class="destination-field trip">
+                        <legend class="text-label">Trip
+                        </legend>
+                        <select ref="tripType" name="trip_type" (change)="handleInput('trip_type', $event)"
+                            id="trip_type">
+                            <option value="one_way" selected>One way</option>
+                            <option value="round_trip">Round</option>
+                        </select>
+                    </fieldset>
+                    }
+                    <fieldset class="destination-field from">
+                        <legend class="text-label">Enter Source</legend>
+                        <div class="input-wrapper autocomplete-wrapper">
+                            <img src="assets/ion_bed.svg" class="input-icon" alt="">
+                            <input type="text" [(ngModel)]="sourceQuery" (input)="onSourceInput($event)"
+                                (blur)="closeSourceSuggestions()" class="search-input" placeholder="New York (JFK)"
+                                id="source" autocomplete="off">
+
+                            @if (showSourceSuggestions && sourceSuggestions.length > 0) {
+                            <div class="suggestions-dropdown">
+                                @for (airport of sourceSuggestions; track airport.code) {
+                                <div class="suggestion-item" (mousedown)="selectSource(airport)">
+                                    <div class="airport-code">{{ airport.code }}</div>
+                                    <div class="airport-details">
+                                        <div class="airport-name">{{ airport.city }}, {{ airport.country }}</div>
+                                        <div class="airport-full-name">{{ airport.name }}</div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                            }
+                        </div>
+                    </fieldset>
+
+                    @if (bannerType === 'flight') {
                     <fieldset class="destination-field from">
                         <legend class="text-label">Enter Destination</legend>
-                        <div class="input-wrapper">
+                        <div class="input-wrapper autocomplete-wrapper">
                             <img src="assets/ion_bed.svg" class="input-icon" alt="">
-                            <input type="text" (change)="handleInput('destination', $event)" class="search-input" placeholder="Istanbul, Turkey" id="destination">
+                            <input type="text" [(ngModel)]="destinationQuery" (input)="onDestinationInput($event)"
+                                (blur)="closeDestinationSuggestions()" class="search-input"
+                                placeholder="Los Angeles (LAX)" id="destination" autocomplete="off">
+
+                            @if (showDestinationSuggestions && destinationSuggestions.length > 0) {
+                            <div class="suggestions-dropdown">
+                                @for (airport of destinationSuggestions; track airport.code) {
+                                <div class="suggestion-item" (mousedown)="selectDestination(airport)">
+                                    <div class="airport-code">{{ airport.code }}</div>
+                                    <div class="airport-details">
+                                        <div class="airport-name">{{ airport.city }}, {{ airport.country }}</div>
+                                        <div class="airport-full-name">{{ airport.name }}</div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                            }
                         </div>
                     </fieldset>
-
+                    }
                     <fieldset class="destination-field">
+                        @if (bannerType === 'flight') {
+                        <legend class="text-label">Departure</legend>
+                        }@else {
                         <legend class="text-label">Check In</legend>
+                        }
                         <div class="input-wrapper">
-                            <input type="date" class="search-input search-input-date" placeholder="Fri 12/2" id="checkin">
+                            <input type="date" class="search-input search-input-date" placeholder="Fri 12/2"
+                                id="checkin">
                         </div>
                     </fieldset>
 
+                    @if (tripType === 'round_trip') {
                     <fieldset class="destination-field">
+                        @if (bannerType === 'flight') {
+                        <legend class="text-label">Return</legend>
+                        }@else {
                         <legend class="text-label">Check Out</legend>
+                        }
                         <div class="input-wrapper">
-                            <input type="date" class="search-input search-input-date" placeholder="Sun 12/4" id="checkout">
+                            <input type="date" class="search-input search-input-date" placeholder="Sun 12/4"
+                                id="checkout">
                         </div>
                     </fieldset>
+                    }
 
+                    @if (bannerType === 'hotel') {
                     <fieldset class="destination-field guest">
                         <legend class="text-label">Rooms & Guests
                         </legend>
                         <img src="assets/User.svg" class="input-icon" alt="User icon">
                         <select name="rooms_guests" (change)="handleInput('rooms_guests', $event)" id="rooms_guests">
-                            <option value="1 room, 1 guest">1 room, 1 guest</option>
-                            <option value="1 room, 2 guests" selected>1 room, 2 guests</option>
+                            <option value="1 room, 1 guest" selected>1 room, 1 guest</option>
+                            <option value="1 room, 2 guests">1 room, 2 guests</option>
                             <option value="1 room, 3 guests">1 room, 3 guests</option>
                             <option value="2 rooms, 2 guests">2 rooms, 2 guests</option>
                             <option value="2 rooms, 3 guests">2 rooms, 3 guests</option>
@@ -51,6 +117,7 @@
                             <option value="3 rooms, 6 guests">3 rooms, 6 guests</option>
                         </select>
                     </fieldset>
+                    }
 
                 </div>
                 <div class="globe-banner__search-container-submit-wrapper">

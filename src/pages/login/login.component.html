@@ -6,10 +6,10 @@
     <p>Login to access your Golobe account</p>
     <form>
       <label>Email</label>
-      <input type="email" placeholder="john.doe@gmail.com" required>
+      <input [(ngModel)]="user.email" type="email"  [ngModelOptions]="{standalone: true}" placeholder="john.doe@gmail.com" required>
       <label>Password</label>
       <div class="password-wrap">
-        <input type="password" placeholder="Password" required>
+        <input type="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" placeholder="Password" required>
         <!-- Add password toggle icon if needed -->
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
         </label>
         <a href="#" class="forgot">Forgot Password</a>
       </div>
-      <button type="submit" class="login-btn">Login</button>
+      <button type="submit" class="login-btn" (click)="handleLogin()">Login</button>
       <div>
         Don't have an account?
         <span class="signup" (click)="handleSignup()">Sign up</span>

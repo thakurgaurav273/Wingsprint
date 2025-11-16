@@ -13,24 +13,26 @@ import { AppService } from '../services/app.service';
 export class AppComponent {
   title = 'booking-app';
 
-  constructor (private appService: AppService, private router: Router) {
+  constructor(private appService: AppService, private router: Router) {
 
   }
 
-    get showLayout(): boolean {
+  get showLayout(): boolean {
     const hiddenRoutes = ['/login', '/signup', '/forgot-password'];
-    return !hiddenRoutes.includes(this.router.url);
+    const path = this.router.url.split('?')[0];
+    return !hiddenRoutes.some(route => path.startsWith(route));
   }
 
-  handleResizeEvent = () =>{
+
+  handleResizeEvent = () => {
     this.appService.updateIsMobileView();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     window.addEventListener('resize', this.handleResizeEvent);
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     window.removeEventListener('resize', this.handleResizeEvent);
   }
 }

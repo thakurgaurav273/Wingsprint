@@ -1,0 +1,10 @@
+<div class="globe__dropdown">
+    <div class="globe__dropdown-list">
+        @for (item of options; track $index) {
+        <div class="globe__dropdown-list-item" (click)="item?.onClick()">
+            <img [src]="item.iconUrl" alt="" class="globe__tab-icon">
+            <p class="globe__flight-tab-text">{{item.title}}</p>
+        </div>
+        }
+    </div>
+</div>

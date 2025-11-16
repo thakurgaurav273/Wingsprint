@@ -1,0 +1,25 @@
+
+.globe__dropdown {
+    position: absolute;
+    top: 70px;
+    right: 80px;
+    width: 200px;
+    background-color: white;
+    z-index: 2;
+    padding: 4px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 20%);
+}
+
+.globe__dropdown-list-item {
+    display: flex;
+    box-sizing: border-box;
+    padding: 8px 0;
+    gap: 10px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.globe__dropdown-list-item.last {
+    border-bottom: unset;
+}

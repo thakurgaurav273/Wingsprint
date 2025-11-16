@@ -86,3 +86,9 @@
     background-color: var(--brand-color-primary);
     border: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .home-container-wrapper{
+        padding: 0 30px;
+    }
+}

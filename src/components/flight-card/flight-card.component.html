@@ -1,90 +1,56 @@
 <div class="flight-card">
   <div class="flight-card__header">
-    <div class="flight-card__airline">
-      <img [src]="flight.airlineLogo" [alt]="flight.airline" class="airline-logo">
-    </div>
-    <div class="flight-card__rating">
-      <div class="rating-badge">{{flight.rating}}</div>
-      <div class="rating-text">
-        <span class="rating-label">{{getRatingText()}}</span>
-        <span class="rating-reviews">{{flight.reviewCount}} reviews</span>
-      </div>
-    </div>
+
+    <button class="favorite-btn" [class.active]="isFavorite" (click)="toggleFavorite()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path
+          d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+        </path>
+      </svg>
+    </button>
+    <p class="flight_number">
+      {{flight.flightNumber}}
+    </p>
     <div class="flight-card__price">
       <span class="price-label">starting from</span>
-      <span class="price-value">${{flight.price}}</span>
+      <span class="price-value">₹{{flight.classTemplates[0].basePrice}}</span>
     </div>
   </div>
 
   <div class="flight-card__body">
-    <!-- First Flight Option -->
-    <div class="flight-option">
-      <div class="flight-checkbox">
-        <input 
-          type="checkbox" 
-          [id]="'flight-' + flight.id + '-1'"
-          [checked]="isFlightSelected(flight.id + '-1')"
-          (change)="toggleFlightSelection(flight.id + '-1')">
-      </div>
-      <div class="flight-details">
-        <div class="flight-time">
-          <span class="time-departure">{{flight.departureTime}}</span>
-          <span class="time-separator">-</span>
-          <span class="time-arrival">{{flight.arrivalTime}}</span>
+    <div class="flight-card__airline">
+      <img [src]="flight.airlineLogo" [alt]="flight.airline" class="airline-logo">
+    </div>
+    <div class="flight-options-wrapper">
+      <div class="flight-option">
+        <div class="flight-checkbox">
+          <input type="checkbox" [id]="'flight-' + flight.id + '-1'" [checked]="isFlightSelected(flight.id + '-1')"
+            (change)="toggleFlightSelection(flight.id + '-1')">
         </div>
-        <div class="flight-info">
-          <span class="flight-airline-name">{{flight.airline}}</span>
+        <div class="flight-details">
+          <div class="flight-time">
+            <span class="time-departure">{{flight.recurringPatterns[0].departureTime}}</span>
+            <div class="separator">
+              <div class="flight-type">
+                <p class="duration">{{getDuration()}}</p>
+              </div>
+              <div class="time-separator"></div>
+              <div class="flight-type">
+                <span class="flight-stops">{{flight.flightType === 'non-stop' ? 'non stop' : '1 stop'}}</span>
+              </div>
+            </div>
+            <span class="time-arrival">{{flight.recurringPatterns[0].arrivalTime}}</span>
+          </div>
+          <div class="flight-info">
+            <span class="flight-airline-name">{{flight.airline}}</span>
+          </div>
         </div>
-      </div>
-      <div class="flight-type">
-        <span class="flight-stops">{{flight.isNonStop ? 'non stop' : '1 stop'}}</span>
-      </div>
-      <div class="flight-duration">
-        <span class="duration-text">{{flight.duration}}</span>
-        <span class="route-text">{{flight.route}}</span>
       </div>
     </div>
-
-    <!-- Second Flight Option (Duplicate for demonstration) -->
-    <div class="flight-option">
-      <div class="flight-checkbox">
-        <input 
-          type="checkbox" 
-          [id]="'flight-' + flight.id + '-2'"
-          [checked]="isFlightSelected(flight.id + '-2')"
-          (change)="toggleFlightSelection(flight.id + '-2')">
-      </div>
-      <div class="flight-details">
-        <div class="flight-time">
-          <span class="time-departure">{{flight.departureTime}}</span>
-          <span class="time-separator">-</span>
-          <span class="time-arrival">{{flight.arrivalTime}}</span>
-        </div>
-        <div class="flight-info">
-          <span class="flight-airline-name">{{flight.airline}}</span>
-        </div>
-      </div>
-      <div class="flight-type">
-        <span class="flight-stops">{{flight.isNonStop ? 'non stop' : '1 stop'}}</span>
-      </div>
-      <div class="flight-duration">
-        <span class="duration-text">{{flight.duration}}</span>
-        <span class="route-text">{{flight.route}}</span>
-      </div>
+    <div class="flight-card__footer">
+      <button class="view-deals-btn" (click)="onViewDeals()">
+        View Deals
+      </button>
     </div>
-  </div>
-
-  <div class="flight-card__footer">
-    <button 
-      class="favorite-btn"
-      [class.active]="isFavorite"
-      (click)="toggleFavorite()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-      </svg>
-    </button>
-    <button class="view-deals-btn" (click)="onViewDeals()">
-      View Deals
-    </button>
   </div>
 </div>

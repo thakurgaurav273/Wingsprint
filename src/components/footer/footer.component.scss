@@ -166,8 +166,12 @@
     box-sizing: border-box;
 }
 
+
 .form {
+    display: flex;
     margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .footer__newsletter-wrapper .text {
@@ -226,17 +230,17 @@
     }
 }
 
-.globe-navbar__logo{
+.globe-navbar__logo {
     height: 80px;
     width: 100px;
 }
 
 @media screen and (max-width: 500px) {
-    .footer__newsletter-wrapper input{
+    .footer__newsletter-wrapper input {
         width: unset;
     }
 
-    .footer__newsletter-wrapper{
+    .footer__newsletter-wrapper {
         width: 80%;
     }
 }

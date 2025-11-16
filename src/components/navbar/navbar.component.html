@@ -13,8 +13,15 @@
     </div>
     <img src="assets/Logo.png" alt="" class="globe-navbar__logo">
     <div class="globe-navbar__right-container">
+        @if (!loggedInUser) {
         <button class="globe-navbar__login btn" (click)="handleLogin()">Login</button>
         <button class="globe-navbar__signup btn" (click)="handleSignup()">Sign up</button>
+        }@else {
+        <button class="globe-navbar__fav"><img src="assets/heart.svg" height="18" width="18" /> Favourites</button>
+        <button class="globe-navbar__profile" (click)="toggleShowProfileDropdown()"><img [src]="loggedInUser.profile" height="36" width="36" /><img
+                 [ngClass]="['dropdown', showProfileDropdown ? 'active' : '']"
+                src="assets/arrowDown.svg" height="10" width="10" /></button>
+        }
     </div>
 </div>
 
@@ -22,26 +29,11 @@
 <div class="globe-navbar__wrapper mobile-nav" [ngClass]="!isMobileDevice ? 'hidden' : ''">
     <img src="assets/Logo.png" alt="" class="globe-navbar__logo">
     <img src="assets/menu.svg" class="globe-navbar-hamburger" (click)="toggleDropdown()" alt="" srcset="">
-    @if(showDropdown){
-    <div class="globe-navbar__dropdown">
-        <div class="globe-navbar__dropdown-list">
-            <div class="globe-navbar__dropdown-list-item" (click)="setActiveTab('flight')">
-                <img src="assets/airplane.svg" alt="" class="globe-navbar__tab-icon">
-                <p class="globe-navbar__flight-tab-text">Find Flight</p>
-            </div>
-            <div class="globe-navbar__dropdown-list-item" (click)="setActiveTab('hotel')">
-                <img src="assets/ion_bed.svg" alt="" class="globe-navbar__tab-icon">
-                <p class="globe-navbar__home-tab-text">Find Stays</p>
-            </div>
-            <div class="globe-navbar__dropdown-list-item" (click)="handleLogin()">
-                <img src="assets/ion_bed.svg" alt="" class="globe-navbar__tab-icon">
-                <p class="globe-navbar__home-tab-text" >Login</p>
-            </div>
-            <div class="globe-navbar__dropdown-list-item last" (click)="handleSignup()">
-                <img src="assets/ion_bed.svg" alt="" class="globe-navbar__tab-icon">
-                <p class="globe-navbar__home-tab-text">Signup</p>
-            </div>
-        </div>
-    </div>
-    }
 </div>
+@if(showDropdown){
+<app-drop-down [options]="navbarOptions"></app-drop-down>
+}
+
+@if (showProfileDropdown) {
+    <app-drop-down [options]="profileOptions"></app-drop-down>
+}

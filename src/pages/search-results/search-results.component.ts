@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { FlightCardComponent } from "../../components/flight-card/flight-card.component";
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { FlightsService } from '../../services/flights.service';
 
 export interface Flight {
   id: string;
@@ -26,92 +26,49 @@ export interface Flight {
 })
 export class SearchResultsComponent {
   data: any = null;
-  constructor(private searchService: SearchService) {
+  searchType: 'flight' | 'hotel' = 'flight';
+  constructor(private searchService: SearchService, private flightService: FlightsService) {
     this.data = this.searchService.getData();
+    console.log(this.data)
   }
   priceRange = { min: 50, max: 1200 };
-  departureTimeRange = { start: '12:01Am', end: '11:56Pm' };
-  
+  departureTimeRange = { min: '12:01', max: '23:59' };
+
   selectedRatings: number[] = [];
   selectedAirlines: string[] = [];
   selectedTripTypes: string[] = [];
-  
-  totalResults = 257;
-  displayedResults = 4;
-  sortBy = 'Recommended';
-  
+
   airlines = [
     { name: 'Emirated', value: 'emirated', checked: false },
     { name: 'Fly Dubai', value: 'flydubai', checked: false },
     { name: 'Qatar', value: 'qatar', checked: false },
     { name: 'Etihad', value: 'etihad', checked: false }
   ];
-  
+
   tripTypes = [
     { name: 'Round trip', value: 'round', checked: false },
     { name: 'On Way', value: 'oneway', checked: false },
     { name: 'Multi-City', value: 'multicity', checked: false },
     { name: 'My Dates Are Flexible', value: 'flexible', checked: false }
   ];
-  
-  ratings = [0, 1, 2, 3, 4];
-  
-  flights: Flight[] = [
-    {
-      id: '1',
-      airline: 'Emirates',
-      airlineLogo: 'emirates-logo.png',
-      rating: 4.2,
-      reviewCount: 54,
-      price: 104,
-      departureTime: '12:00 pm',
-      arrivalTime: '01:28 pm',
-      duration: '2h 28m',
-      route: 'EWR-BNA',
-      isNonStop: true
-    },
-    {
-      id: '2',
-      airline: 'flydubai',
-      airlineLogo: 'flydubai-logo.png',
-      rating: 4.2,
-      reviewCount: 54,
-      price: 104,
-      departureTime: '12:00 pm',
-      arrivalTime: '01:28 pm',
-      duration: '2h 28m',
-      route: 'EWR-BNA',
-      isNonStop: true
-    },
-    {
-      id: '3',
-      airline: 'Qatar Airways',
-      airlineLogo: 'qatar-logo.png',
-      rating: 4.2,
-      reviewCount: 54,
-      price: 104,
-      departureTime: '12:00 pm',
-      arrivalTime: '01:28 pm',
-      duration: '2h 28m',
-      route: 'EWR-BNA',
-      isNonStop: true
-    },
-    {
-      id: '4',
-      airline: 'Etihad',
-      airlineLogo: 'etihad-logo.png',
-      rating: 4.2,
-      reviewCount: 54,
-      price: 104,
-      departureTime: '12:00 pm',
-      arrivalTime: '01:28 pm',
-      duration: '2h 28m',
-      route: 'EWR-BNA',
-      isNonStop: true
-    }
-  ];
 
-  ngOnInit(): void {}
+  ratings = [0, 1, 2, 3, 4];
+
+  flights: Array<any> = [];
+  totalResults = 0;
+  displayedResults = 4;
+  sortBy = 'Recommended';
+
+  ngOnInit(): void {
+    this.flightService.getAllFlights().subscribe((results:any)=>{
+      console.log(results)
+    });
+    console.log(this.data)
+    this.flightService.getFilteredFlights(this.data.source, this.data.destination, this.data.checkIn).subscribe((results: any) => {
+      this.flights = results;
+      this.totalResults = this.flights.length;
+    })
+  }
 
   onPriceChange(value: any): void {
     this.priceRange = value;
@@ -146,10 +103,10 @@ export class SearchResultsComponent {
     console.log('Show more results');
   }
 
-  onFlightSelect(flight: Flight): void {
-    console.log('Selected flight:', flight);
+  onFlightSelect(event: any): void {
+    console.log('Selected flight:', event);
   }
-  toggleFilter(id: string){
+  toggleFilter(id: string) {
 
   }
 
