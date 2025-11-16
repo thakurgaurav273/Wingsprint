@@ -7,48 +7,61 @@ export class SearchService {
   public destination: string = '';
   public checkIn: Date = new Date();
   public checkOut: Date = new Date();
-  public roomGuests: string = '';
-
+  public roomGuests: string = '1 room, 1 guest';
+  public tripType: 'one_way' | 'round_trip' = 'one_way';
+  public source: string = '';
   constructor() { }
 
-  setDestination(destination: string){
-    this.destination = destination;
-  }
+  setDestination(code: string) { this.destination = code; }
 
-  getData(){
+  getData() {
     return {
+      source: this.source,
       destination: this.destination,
       checkIn: this.checkIn,
       checkOut: this.checkOut,
-      roomGuests: this.roomGuests
+      roomGuests: this.roomGuests,
+      tripType: this.tripType
     }
   }
 
-  setCheckIn(checkIn: Date){
+  
+
+  setCheckIn(checkIn: Date) {
     this.checkIn = checkIn;
   }
 
-  setCheckOut(checkOut: Date){
+  setCheckOut(checkOut: Date) {
     this.checkOut = checkOut;
   }
 
-  setRoomGuests(roomGuests: string){
+  setRoomGuests(roomGuests: string) {
     this.roomGuests = roomGuests;
   }
 
-  getDestination(){
+  setTripType(tripType: 'one_way' | 'round_trip') {
+    this.tripType = tripType;
+  }
+
+  getDestination() {
     return this.destination;
   }
 
-  getCheckIn(){
+  setSource(code: string) { this.source = code; }
+
+  getCheckIn() {
     return this.checkIn;
   }
 
-  getCheckOut(){
+  getCheckOut() {
     return this.checkOut;
   }
 
-  getRoomGuests(){
+  getRoomGuests() {
     return this.roomGuests;
+  }
+
+  getTripType() {
+    return this.tripType;
   }
 }

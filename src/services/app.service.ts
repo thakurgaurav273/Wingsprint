@@ -1,6 +1,9 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, signal, Signal, WritableSignal } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
-interface User{
+interface User {
   id: string,
   google_id: string,
   name: string,
@@ -14,28 +17,34 @@ export class AppService {
   private mobileView: WritableSignal<boolean> = signal(false);
   private showLogin: WritableSignal<boolean> = signal(false);
   private loggedInUser: WritableSignal<User | null> = signal(null)
-  constructor() {
+  constructor(private http: HttpClient, private router:Router) {
     this.updateIsMobileView();
+    const isLoggedIn = localStorage.getItem('user');
+    if(isLoggedIn) {
+      this.loggedInUser.set(JSON.parse(isLoggedIn));
+      router.navigate(['/']);
+    }
   }
 
-  updateIsMobileView(){
+  updateIsMobileView() {
     let width = window.innerWidth;
-    if(width < 768){
+    if (width < 768) {
       this.mobileView.set(true);
-    }else{
+    } else {
       this.mobileView.set(false)
     }
   }
 
-  setShowNavbar(show: boolean){
+  setShowNavbar(show: boolean) {
     this.showLogin.set(show);
   }
 
-  getShowLogin(){
+  getShowLogin() {
     return this.showLogin;
   }
-  
-  getIsMobileView(){
+
+  getIsMobileView() {
     return this.mobileView;
   }
+
 }
